@@ -3,13 +3,12 @@ package com.uv.modelo;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "ventas")
-public class Venta {
+@Entity(name = "corteCaja")
+public class CorteCaja {
 
     @Id
-    @Column(name = "idVenta")
-    @GeneratedValue
-    private Long idVenta;
+    @Column(name = "idCorteCaja")
+    private Long idCorteCaja;
 
     @Column(name = "total", nullable = false)
     private double total;
@@ -20,11 +19,6 @@ public class Venta {
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Column(name = "idVendedor")
     private Vendedor vendedor;
-
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "idCorteCaja")
-    private CorteCaja corteCaja;
-
 
 
 }

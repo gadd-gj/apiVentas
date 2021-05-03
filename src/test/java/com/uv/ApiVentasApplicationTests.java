@@ -3,10 +3,10 @@ package com.uv;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+//@SpringBootTest
 class ApiVentasApplicationTests {
 
-    @Test
+    //@Test
     void contextLoads() {
     }
 

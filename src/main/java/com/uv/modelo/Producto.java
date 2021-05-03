@@ -7,6 +7,7 @@ public class Producto {
 
 
     @Id
+    @Column(name = "idProducto")
     @GeneratedValue
     private Long id;
 
@@ -28,8 +29,8 @@ public class Producto {
     @Column(name = "activo", nullable = false)
     private int activo;
 
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Column(name = "idProveedor")
     private Proveedor proveedor;
 
     public Producto() {
@@ -76,9 +77,7 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getExistencia() {
-        return existencia;
-    }
+    public int getExistencia() { return existencia; }
 
     public void setExistencia(int existencia) {
         this.existencia = existencia;
