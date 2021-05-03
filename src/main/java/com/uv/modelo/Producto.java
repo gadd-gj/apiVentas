@@ -28,8 +28,8 @@ public class Producto {
     @Column(name = "activo", nullable = false)
     private int activo;
 
-   
-    @Column(name = "idProveedor", nullable = false)
+
+    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Proveedor proveedor;
 
     public Producto() {
