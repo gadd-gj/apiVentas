@@ -20,5 +20,38 @@ public class CorteCaja {
     @Column(name = "idVendedor")
     private Vendedor vendedor;
 
+    public CorteCaja (){
+    }
 
+    public Long getIdCorteCaja() {
+        return idCorteCaja;
+    }
+
+    public void setIdCorteCaja(Long idCorteCaja) {
+        this.idCorteCaja = idCorteCaja;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
 }

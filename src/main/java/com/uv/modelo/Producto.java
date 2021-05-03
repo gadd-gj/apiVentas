@@ -9,7 +9,7 @@ public class Producto {
     @Id
     @Column(name = "idProducto")
     @GeneratedValue
-    private Long id;
+    private Long idProducto;
 
     @Column(name = "codigo", nullable = false)
     private Long codigo;
@@ -36,13 +36,13 @@ public class Producto {
     public Producto() {
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdProducto(Long idProducto) {
+        this.idProducto = idProducto;
     }
 
 
-    public Long getId() {
-        return id;
+    public Long getIdProducto() {
+        return idProducto;
     }
 
     public Long getCodigo() {
