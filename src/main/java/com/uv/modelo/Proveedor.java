@@ -3,7 +3,8 @@ package com.uv.modelo;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity (name = "proveedores")
+@Entity
+@Table(name = "proveedores")
 public class Proveedor {
 
     @Id

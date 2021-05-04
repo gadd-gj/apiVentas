@@ -2,7 +2,8 @@ package com.uv.modelo;
 
 import javax.persistence.*;
 
-@Entity(name = "vendedores")
+@Entity
+@Table(name = "vendedores")
 public class Vendedor {
 
     @Id

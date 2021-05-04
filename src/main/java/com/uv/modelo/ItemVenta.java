@@ -2,8 +2,9 @@ package com.uv.modelo;
 
 import javax.persistence.*;
 
-@Entity(name = "itemVenta")
-public class itemVenta {
+@Entity
+@Table(name = "ItemVenta")
+public class ItemVenta {
 
     @Id
     @Column(name = "idItem")
@@ -24,7 +25,7 @@ public class itemVenta {
 
 
 
-    public itemVenta() {
+    public ItemVenta() {
     }
 
     public Long getIdItem() {

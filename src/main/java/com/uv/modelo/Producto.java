@@ -2,7 +2,8 @@ package com.uv.modelo;
 
 import javax.persistence.*;
 
-@Entity(name = "productos")
+@Entity
+@Table(name = "productos")
 public class Producto {
 
 

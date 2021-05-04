@@ -1,12 +1,10 @@
 package com.uv.modelo;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity(name = "administradores")
+@Entity
+@Table(name = "administradores")
 public class Administrador {
 
     @Id

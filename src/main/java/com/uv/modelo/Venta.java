@@ -3,7 +3,8 @@ package com.uv.modelo;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity(name = "ventas")
+@Entity
+@Table(name = "ventas")
 public class Venta {
 
     @Id
