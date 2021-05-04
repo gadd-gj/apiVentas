@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ItemVenta {
 
     @Id
-    @Column(name = "idItem")
+    @Column(name = "idItemVenta")
     @GeneratedValue
     private Long idItem;
 
@@ -17,13 +17,12 @@ public class ItemVenta {
     @Column(name = "precioUnitario", nullable = false)
     private double precioUnitario;
 
-    @Column(name = "total",nullable = false)
+    @Column(name = "total", nullable = false)
     private double total;
 
-    @ManyToOne()
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idProducto")
     private Producto producto;
-
-
 
     public ItemVenta() {
     }

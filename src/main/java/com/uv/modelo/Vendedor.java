@@ -29,8 +29,8 @@ public class Vendedor {
     @Column(name = "activo", nullable = false)
     private int activo;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "idAdministrador")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idAdministrador")
     private Administrador administrador;
 
     public Vendedor() {

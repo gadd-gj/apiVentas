@@ -1,7 +1,7 @@
 package com.uv.modelo;
 
 import javax.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(name = "proveedores")

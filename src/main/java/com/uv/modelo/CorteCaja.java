@@ -17,8 +17,8 @@ public class CorteCaja {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "idVendedor")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idVendedor")
     private Vendedor vendedor;
 
     public CorteCaja (){

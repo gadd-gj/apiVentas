@@ -18,12 +18,12 @@ public class Venta {
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "idVendedor")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idVendedor")
     private Vendedor vendedor;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @Column(name = "idCorteCaja")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idCorteCaja")
     private CorteCaja corteCaja;
 
 
