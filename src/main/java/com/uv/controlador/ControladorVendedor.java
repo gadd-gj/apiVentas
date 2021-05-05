@@ -59,6 +59,7 @@ public class ControladorVendedor {
         vendedor.setApellidoMaterno(updateVendedor.getApellidoMaterno());
         vendedor.setUsername(updateVendedor.getUsername());
         vendedor.setPassword(updateVendedor.getPassword());
+        vendedor.setActivo(updateVendedor.getActivo());
         vendedor.setAdministrador(updateVendedor.getAdministrador());
 
         
