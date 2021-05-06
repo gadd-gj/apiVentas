@@ -1,8 +1,10 @@
 package com.uv.modelo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import java.time.LocalDateTime;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -18,7 +20,8 @@ public class CorteCaja {
     private double total;
 
     @Column(name = "fecha", nullable = false)
-    private Date fecha;
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime fecha;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVendedor")
@@ -45,11 +48,11 @@ public class CorteCaja {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDateTime fecha) {
         this.fecha = fecha;
     }
 
