@@ -1,5 +1,8 @@
 package com.uv.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 
 @Entity
@@ -32,6 +35,8 @@ public class Producto {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "idProveedor")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProveedor")
+    @JsonIdentityReference(alwaysAsId = true)
     private Proveedor proveedor;
 
     public Producto() {

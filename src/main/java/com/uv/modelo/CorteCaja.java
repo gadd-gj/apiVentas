@@ -1,5 +1,8 @@
 package com.uv.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,6 +22,8 @@ public class CorteCaja {
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVendedor")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVendedor")
+    @JsonIdentityReference(alwaysAsId = true)
     private Vendedor vendedor;
 
     public CorteCaja (){
