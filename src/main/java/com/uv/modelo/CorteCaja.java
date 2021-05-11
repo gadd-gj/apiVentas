@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.time.LocalDateTime;
 import javax.persistence.*;
-import java.util.Date;
+
 
 @Entity
 @Table(name = "corteCaja")
