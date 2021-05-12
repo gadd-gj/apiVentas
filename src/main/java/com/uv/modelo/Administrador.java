@@ -12,7 +12,7 @@ public class Administrador {
     @GeneratedValue
     private Long idAdministrador;
 
-    @Column( name = "nombre", nullable = false)
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
     @Column(name = "apellidoPaterno", nullable = false)
@@ -77,4 +77,5 @@ public class Administrador {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }

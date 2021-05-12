@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "productos")
 public class Producto {
 
-
     @Id
     @Column(name = "idProducto")
     @GeneratedValue
@@ -45,7 +44,6 @@ public class Producto {
     public void setIdProducto(Long idProducto) {
         this.idProducto = idProducto;
     }
-
 
     public Long getIdProducto() {
         return idProducto;
@@ -83,7 +81,9 @@ public class Producto {
         this.precio = precio;
     }
 
-    public int getExistencia() { return existencia; }
+    public int getExistencia() {
+        return existencia;
+    }
 
     public void setExistencia(int existencia) {
         this.existencia = existencia;
@@ -105,7 +105,11 @@ public class Producto {
         this.proveedor = proveedor;
     }
 
+    @Override
+    public String toString() {
+        return "Producto{" + "idProducto=" + idProducto + ", codigo=" + codigo + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio + ", existencia=" + existencia + ", activo=" + activo + ", proveedor=" + proveedor + '}';
+    }
 
-
-
+    
+    
 }

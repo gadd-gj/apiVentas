@@ -37,6 +37,7 @@ public class ControladorProducto {
                 () -> new RecursoNoEncontrado("No se encontró el id : " + id)
         );
 
+        System.out.println("Empresa: " + producto.getProveedor().getEmpresa());
         return ResponseEntity.ok().body(producto);
     }
 

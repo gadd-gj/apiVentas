@@ -55,6 +55,7 @@ public class ControladorProveedor {
 
         proveedor.setEmpresa(updateProveedor.getEmpresa());
         proveedor.setTelefono(updateProveedor.getTelefono());
+        proveedor.setActivo(updateProveedor.getActivo());
 
         final Proveedor p = repositorioProveedor.save(proveedor);
         return ResponseEntity.ok(p);

@@ -1,6 +1,7 @@
 package com.uv.modelo;
 
 import javax.persistence.*;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 
 @Entity
@@ -10,7 +11,7 @@ public class Proveedor {
     @Id
     @Column(name = "idProveedor")
     @GeneratedValue
-    private Long id;
+    private Long idProveedor;
 
     @Column(name = "empresa", nullable = false)
     private String empresa;
@@ -18,16 +19,18 @@ public class Proveedor {
     @Column(name = "telefono", nullable = false)
     private String telefono;
 
+    @Column(name = "activo", nullable = false, columnDefinition="Integer default '1'")
+    private int activo;
 
     public Proveedor(){
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdProveedor() {
+        return idProveedor;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdProveedor(Long idProveedor) {
+        this.idProveedor = idProveedor;
     }
 
     public String getEmpresa() {
@@ -45,4 +48,14 @@ public class Proveedor {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public int getActivo() {
+        return activo;
+    }
+
+    public void setActivo(int activo) {
+        this.activo = activo;
+    }
+    
+    
 }
