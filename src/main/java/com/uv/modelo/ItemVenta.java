@@ -24,6 +24,12 @@ public class ItemVenta {
     private double total;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idVenta")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVenta")
+    @JsonIdentityReference(alwaysAsId = true)
+    private Venta venta;
+
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "idProducto")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProducto")
     @JsonIdentityReference(alwaysAsId = true)
@@ -71,4 +77,15 @@ public class ItemVenta {
     public void setProducto(Producto producto) {
         this.producto = producto;
     }
+
+    public Venta getVenta() {
+        return venta;
+    }
+
+    public void setVenta(Venta venta) {
+        this.venta = venta;
+    }
+    
+    
+    
 }
