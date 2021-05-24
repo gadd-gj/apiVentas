@@ -39,6 +39,7 @@ public class Producto {
     private Proveedor proveedor;
 
     public Producto() {
+        //Esta vacio solo para poder crear el objeto
     }
 
     public void setIdProducto(Long idProducto) {

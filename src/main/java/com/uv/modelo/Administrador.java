@@ -28,6 +28,7 @@ public class Administrador {
     private String password;
 
     public Administrador() {
+        //Esta vacio solo para poder crear el objeto
     }
 
     public Long getIdAdministrador() {

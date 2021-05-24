@@ -24,6 +24,7 @@ public class ControladorProducto {
 
     @Autowired
     private RepositorioProducto repositorioProducto;
+    private static final String MESSAGE ="No se encontró el id: ";
 
     @GetMapping("/productos")
     public List<Producto> showAll() {
@@ -39,10 +40,8 @@ public class ControladorProducto {
     public ResponseEntity<Producto> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         Producto producto = repositorioProducto.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
-
-        System.out.println("Empresa: " + producto.getProveedor().getEmpresa());
         return ResponseEntity.ok().body(producto);
     }
 
@@ -56,7 +55,7 @@ public class ControladorProducto {
             throws RecursoNoEncontrado {
 
         Producto producto = repositorioProducto.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         producto.setNombre(updateProducto.getNombre());
@@ -76,7 +75,7 @@ public class ControladorProducto {
     public Map<String, Boolean> delete(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         Producto producto = repositorioProducto.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         repositorioProducto.delete(producto);

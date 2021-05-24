@@ -18,6 +18,7 @@ public class ControladorAdministrador {
 
     @Autowired
     private RepositorioAdministrador repositorioAdministrador;
+    private static final String MESSAGE = "No se encontró el id: ";
 
     @GetMapping("/administradores")
     public List<Administrador> showAll() {
@@ -28,7 +29,7 @@ public class ControladorAdministrador {
     public ResponseEntity<Administrador> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         Administrador administrador = repositorioAdministrador.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         return ResponseEntity.ok().body(administrador);
@@ -44,7 +45,7 @@ public class ControladorAdministrador {
             throws RecursoNoEncontrado {
 
         Administrador administrador = repositorioAdministrador.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         administrador.setNombre(updateAdministrador.getNombre());
@@ -62,7 +63,7 @@ public class ControladorAdministrador {
     public Map<String, Boolean> delete(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         Administrador administrador = repositorioAdministrador.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         repositorioAdministrador.delete(administrador);

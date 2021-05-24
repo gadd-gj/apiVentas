@@ -24,6 +24,8 @@ public class ControladorCorteCaja {
 
     @Autowired
     private RepositorioCorteCaja repositorioCorteCaja;
+    private static final String MESSAGE = "No se encontró el id: ";
+    
 
     @GetMapping("/cortecaja")
     public List<CorteCaja> showAll() {
@@ -34,7 +36,7 @@ public class ControladorCorteCaja {
     public ResponseEntity<CorteCaja> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         CorteCaja corteCaja = repositorioCorteCaja.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         return ResponseEntity.ok().body(corteCaja);
@@ -50,7 +52,7 @@ public class ControladorCorteCaja {
             throws RecursoNoEncontrado {
 
         CorteCaja corteCaja = repositorioCorteCaja.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         corteCaja.setTotal(updateCorteCaja.getTotal());
@@ -66,7 +68,7 @@ public class ControladorCorteCaja {
     public Map<String, Boolean> delete(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         CorteCaja corteCaja= repositorioCorteCaja.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         repositorioCorteCaja.delete(corteCaja);

@@ -24,6 +24,7 @@ public class ControladorProveedor {
 
     @Autowired
     private RepositorioProveedor repositorioProveedor;
+    private static final String MESSAGE = "No se encontró el id : ";
 
     @GetMapping("/proveedores")
     public List<Proveedor> showAll() {
@@ -34,7 +35,7 @@ public class ControladorProveedor {
     public ResponseEntity<Proveedor> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         Proveedor proveedor = repositorioProveedor.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         return ResponseEntity.ok().body(proveedor);
@@ -50,7 +51,7 @@ public class ControladorProveedor {
             throws RecursoNoEncontrado {
 
         Proveedor proveedor = repositorioProveedor.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         proveedor.setEmpresa(updateProveedor.getEmpresa());
@@ -66,7 +67,7 @@ public class ControladorProveedor {
     public Map<String, Boolean> delete(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
         Proveedor proveedor= repositorioProveedor.findById(id).orElseThrow(
-                () -> new RecursoNoEncontrado("No se encontró el id : " + id)
+                () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 
         repositorioProveedor.delete(proveedor);

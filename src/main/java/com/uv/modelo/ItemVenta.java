@@ -36,6 +36,7 @@ public class ItemVenta {
     private Producto producto;
 
     public ItemVenta() {
+        //Esta vacio solo para poder crear el objeto
     }
 
     public Long getIdItem() {

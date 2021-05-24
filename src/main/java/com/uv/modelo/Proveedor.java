@@ -1,7 +1,6 @@
 package com.uv.modelo;
 
 import javax.persistence.*;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 
 @Entity
@@ -23,6 +22,7 @@ public class Proveedor {
     private int activo;
 
     public Proveedor(){
+        //Esta vacio solo para poder crear el objeto
     }
 
     public Long getIdProveedor() {

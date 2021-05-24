@@ -38,6 +38,7 @@ public class Venta {
 
 
     public Venta() {
+        //Esta vacio solo para poder crear el objeto
     }
 
     public Long getIdVenta() {

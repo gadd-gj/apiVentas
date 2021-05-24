@@ -39,6 +39,7 @@ public class Vendedor {
     private Administrador administrador;
 
     public Vendedor() {
+        //Esta vacio solo para poder crear el objeto
     }
 
     public Long getIdVendedor() {

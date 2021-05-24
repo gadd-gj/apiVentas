@@ -30,6 +30,7 @@ public class CorteCaja {
     private Vendedor vendedor;
 
     public CorteCaja (){
+        //Esta vacio solo para poder crear el objeto
     }
 
     public Long getIdCorteCaja() {
