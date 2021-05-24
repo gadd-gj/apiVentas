@@ -30,6 +30,11 @@ public class ControladorProducto {
         return repositorioProducto.findAll();
     }
 
+    @GetMapping("/productos/existencias")
+    public List<Producto> existencias() {
+        return repositorioProducto.findByExistenciaAndActivo();
+    }
+
     @GetMapping("/productos/{id}")
     public ResponseEntity<Producto> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
@@ -45,7 +50,7 @@ public class ControladorProducto {
     public Producto create(@Valid @RequestBody Producto producto) {
         return repositorioProducto.save(producto);
     }
-    
+
     @PutMapping("/productos/{id}")
     public ResponseEntity<Producto> update(@PathVariable(value = "id") Long id, @Valid @RequestBody Producto updateProducto)
             throws RecursoNoEncontrado {
@@ -66,7 +71,7 @@ public class ControladorProducto {
         return ResponseEntity.ok(p);
 
     }
-    
+
     @DeleteMapping("/productos/{id}")
     public Map<String, Boolean> delete(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
