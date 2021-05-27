@@ -5,23 +5,26 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "corteCaja")
 public class CorteCaja {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "idCorteCaja")
     private Long idCorteCaja;
 
     @Column(name = "total", nullable = false)
     private double total;
 
-    @Column(name = "fecha", nullable = false)
+    @Column(name = "fecha", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime fecha;
+    private Date fecha;
 
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVendedor")
@@ -29,7 +32,7 @@ public class CorteCaja {
     @JsonIdentityReference(alwaysAsId = true)
     private Vendedor vendedor;
 
-    public CorteCaja (){
+    public CorteCaja() {
         //Esta vacio solo para poder crear el objeto
     }
 
@@ -49,11 +52,11 @@ public class CorteCaja {
         this.total = total;
     }
 
-    public LocalDateTime getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

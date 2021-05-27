@@ -23,7 +23,7 @@ public class ItemVenta {
     @Column(name = "total", nullable = false)
     private double total;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVenta")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVenta")
     @JsonIdentityReference(alwaysAsId = true)

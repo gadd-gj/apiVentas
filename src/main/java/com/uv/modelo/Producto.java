@@ -37,7 +37,7 @@ public class Producto {
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idProveedor")
     @JsonIdentityReference(alwaysAsId = true)
     private Proveedor proveedor;
-
+    
     public Producto() {
         //Esta vacio solo para poder crear el objeto
     }
@@ -104,7 +104,7 @@ public class Producto {
 
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
-    }
+    } 
 
     @Override
     public String toString() {

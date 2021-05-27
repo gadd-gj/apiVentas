@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import java.time.LocalDateTime;
+import java.util.Date;
 import javax.persistence.*;
 
 
@@ -17,20 +18,21 @@ public class Venta {
     @GeneratedValue
     private Long idVenta;
 
-    @Column(name = "total", nullable = false)
+    @Column(name = "total", nullable = true)
     private double total;
 
-    @Column(name = "fecha", nullable = false)
+    @Column(name = "fecha", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime fecha;
+    private Date fecha;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVendedor")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVendedor")
     @JsonIdentityReference(alwaysAsId = true)
     private Vendedor vendedor;
 
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "idCorteCaja")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idCorteCaja")
     @JsonIdentityReference(alwaysAsId = true)
@@ -57,11 +59,11 @@ public class Venta {
         this.total = total;
     }
 
-    public LocalDateTime getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDateTime fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
