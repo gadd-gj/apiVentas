@@ -21,53 +21,53 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/tienda")
 public class ControladorItemVenta {
-    
+
     @Autowired
     private RepositorioItemVenta repositorioItemVenta;
-    
+
     @GetMapping("/itemventas")
     public List<ItemVenta> showAll() {
         return repositorioItemVenta.findAll();
     }
-    
+
     @GetMapping("/itemventas/{id}")
     public ResponseEntity<ItemVenta> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
-        
+
         ItemVenta itemVenta = repositorioItemVenta.findById(id).orElseThrow(
                 () -> new RecursoNoEncontrado("No se encontró el id: " + id)
         );
-        
+
         return ResponseEntity.ok().body(itemVenta);
-        
+
     }
-    
+
     @PostMapping("/itemventas")
     public ItemVenta create(@Valid @RequestBody ItemVenta itemVenta) {
         return repositorioItemVenta.save(itemVenta);
     }
-    
+
     @PutMapping("/itemventas/{id}")
     public ResponseEntity<ItemVenta> update(@PathVariable(value = "id") Long id, @Valid @RequestBody ItemVenta updateItemVenta)
             throws RecursoNoEncontrado {
-        
+
         ItemVenta itemVenta = repositorioItemVenta.findById(id).orElseThrow(
                 () -> new RecursoNoEncontrado("No se encontró el id : " + id)
         );
-        
+
         itemVenta.setCantidad(updateItemVenta.getCantidad());
         itemVenta.setProducto(updateItemVenta.getProducto());
         itemVenta.setPrecioUnitario(updateItemVenta.getPrecioUnitario());
         itemVenta.setTotal(updateItemVenta.getTotal());
-        
+
         final ItemVenta itv = repositorioItemVenta.save(itemVenta);
         return ResponseEntity.ok(itv);
-        
+
     }
-    
+
     @DeleteMapping("/itemventas/{id}")
     public Map<String, Boolean> delete(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
-        ItemVenta itemVenta= repositorioItemVenta.findById(id).orElseThrow(
+        ItemVenta itemVenta = repositorioItemVenta.findById(id).orElseThrow(
                 () -> new RecursoNoEncontrado("No se encontró el id : " + id)
         );
 
@@ -76,5 +76,5 @@ public class ControladorItemVenta {
         respuesta.put("delete", Boolean.TRUE);
         return respuesta;
     }
-    
+
 }

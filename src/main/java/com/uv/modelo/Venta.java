@@ -4,10 +4,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
-
 
 @Entity
 @Table(name = "ventas")
@@ -38,9 +37,12 @@ public class Venta {
     @JsonIdentityReference(alwaysAsId = true)
     private CorteCaja corteCaja;
 
-
     public Venta() {
         //Esta vacio solo para poder crear el objeto
+    }
+
+    public Venta(Long idVenta) {
+        this.idVenta = idVenta;
     }
 
     public Long getIdVenta() {
@@ -82,4 +84,10 @@ public class Venta {
     public void setCorteCaja(CorteCaja corteCaja) {
         this.corteCaja = corteCaja;
     }
+
+    @Override
+    public String toString() {
+        return "Venta{" + "idVenta=" + idVenta + ", total=" + total + ", fecha=" + fecha + ", vendedor=" + vendedor + ", corteCaja=" + corteCaja + '}';
+    }
+
 }

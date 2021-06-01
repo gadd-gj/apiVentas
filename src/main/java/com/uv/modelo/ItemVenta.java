@@ -86,7 +86,10 @@ public class ItemVenta {
     public void setVenta(Venta venta) {
         this.venta = venta;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "ItemVenta{" + "idItem=" + idItem + ", cantidad=" + cantidad + ", precioUnitario=" + precioUnitario + ", total=" + total + ", venta=" + venta + ", producto=" + producto + '}';
+    }
+
 }

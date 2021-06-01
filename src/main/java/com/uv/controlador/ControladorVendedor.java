@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -83,4 +85,20 @@ public class ControladorVendedor {
         return respuesta;
     }
 
+    @RequestMapping(value = "/vendedores/login", method = RequestMethod.GET)
+    public ResponseEntity findByUsername(@RequestParam("username") String username) {
+        
+        Map<String, String> response = new HashMap<String, String>();
+
+        boolean isValid = repositorioVendedor.existsByUsername(username);
+        
+        if (isValid) {
+            response.put("ok", "1");
+            return ResponseEntity.accepted().body(response);
+        } else {
+            response.put("error", "0");
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+    
 }
