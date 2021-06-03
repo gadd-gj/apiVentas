@@ -84,23 +84,5 @@ public class ControladorVendedor {
         respuesta.put("delete", Boolean.TRUE);
         return respuesta;
     }
-
-    @RequestMapping(value = "/vendedores/login", method = RequestMethod.GET)
-    public ResponseEntity findByUsername(@RequestParam("username") String username) {
-        
-        Map<String, String> response = new HashMap<String, String>();
-
-        boolean isValid = repositorioVendedor.existsByUsername(username);
-        
-        if (isValid) {
-            Vendedor vendedor = repositorioVendedor.findByUsername(username);
-            response.put("ok", "2");
-            response.put("idVendedor", String.valueOf(vendedor.getIdVendedor()));
-            return ResponseEntity.accepted().body(response);
-        } else {
-            response.put("error", "0");
-            return ResponseEntity.badRequest().body(response);
-        }
-    }
     
 }
