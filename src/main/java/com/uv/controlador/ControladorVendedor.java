@@ -93,7 +93,9 @@ public class ControladorVendedor {
         boolean isValid = repositorioVendedor.existsByUsername(username);
         
         if (isValid) {
-            response.put("ok", "1");
+            Vendedor vendedor = repositorioVendedor.findByUsername(username);
+            response.put("ok", "2");
+            response.put("idVendedor", String.valueOf(vendedor.getIdVendedor()));
             return ResponseEntity.accepted().body(response);
         } else {
             response.put("error", "0");

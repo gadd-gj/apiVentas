@@ -80,7 +80,9 @@ public class ControladorAdministrador {
         boolean isValid = repositorioAdministrador.existsByUsername(username);
         
         if (isValid) {
+            Administrador admin = repositorioAdministrador.findByUsername(username);
             response.put("ok", "1");
+            response.put("idAdministrador", String.valueOf(admin.getIdAdministrador()));
             return ResponseEntity.accepted().body(response);
         } else {
             response.put("error", "0");

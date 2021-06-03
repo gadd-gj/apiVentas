@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface RepositorioAdministrador extends JpaRepository<Administrador, Long> {
 
     public boolean existsByUsername(String username);
+
+    public Administrador findByUsername(String username);
 }
