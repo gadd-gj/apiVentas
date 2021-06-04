@@ -37,26 +37,30 @@ public class ControladorLogin {
 
         Map<String, String> response = new HashMap<String, String>();
 
-        
         if (repositorioAdministrador.existsByUsername(username)) {
-            
+
             Administrador admin = repositorioAdministrador.findByUsername(username);
             response.put("ok", "1");
             response.put("idAdministrador", String.valueOf(admin.getIdAdministrador()));
             return ResponseEntity.accepted().body(response);
-            
+
         } else if (repositorioVendedor.existsByUsername(username)) {
 
             Vendedor vendedor = repositorioVendedor.findByUsername(username);
-            response.put("ok", "2");
-            response.put("idVendedor", String.valueOf(vendedor.getIdVendedor()));
-            return ResponseEntity.accepted().body(response);
-        
+            if (vendedor.getActivo() == 1) {
+                response.put("ok", "2");
+                response.put("idVendedor", String.valueOf(vendedor.getIdVendedor()));
+                return ResponseEntity.accepted().body(response);
+            } else {
+                response.put("error", "0");
+                return ResponseEntity.badRequest().body(response);
+            }
+
         } else {
-            
+
             response.put("error", "0");
             return ResponseEntity.badRequest().body(response);
-        
+
         }
     }
 

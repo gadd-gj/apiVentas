@@ -11,4 +11,8 @@ public interface RepositorioProducto extends JpaRepository<Producto, Long> {
             + "from Producto p where p.existencia <= 10 and p.activo = 1")
     public List<Producto> findByExistenciaAndActivo();
 
+    public Producto findByCodigo(Long codigo);
+
+    public boolean existsByCodigo(Long codigo);
+
 }

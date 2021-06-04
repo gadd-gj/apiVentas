@@ -34,6 +34,11 @@ public class ControladorVendedor {
         return repositorioVendedor.findAll();
     }
 
+    @GetMapping("/vendedores/activos")
+    public List<Vendedor> existencias() {
+        return repositorioVendedor.findByActivo();
+    }
+    
     @GetMapping("/vendedores/{id}")
     public ResponseEntity<Vendedor> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 

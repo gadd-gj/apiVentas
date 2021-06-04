@@ -31,6 +31,11 @@ public class ControladorProveedor {
         return repositorioProveedor.findAll();
     }
 
+    @GetMapping("/proveedores/activos")
+    public List<Proveedor> existencias() {
+        return repositorioProveedor.findByActivo();
+    }
+
     @GetMapping("/proveedores/{id}")
     public ResponseEntity<Proveedor> searchById(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
@@ -66,7 +71,7 @@ public class ControladorProveedor {
     @DeleteMapping("/proveedores/{id}")
     public Map<String, Boolean> delete(@PathVariable(value = "id") Long id) throws RecursoNoEncontrado {
 
-        Proveedor proveedor= repositorioProveedor.findById(id).orElseThrow(
+        Proveedor proveedor = repositorioProveedor.findById(id).orElseThrow(
                 () -> new RecursoNoEncontrado(MESSAGE + id)
         );
 

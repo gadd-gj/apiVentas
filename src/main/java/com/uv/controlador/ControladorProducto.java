@@ -24,7 +24,7 @@ public class ControladorProducto {
 
     @Autowired
     private RepositorioProducto repositorioProducto;
-    private static final String MESSAGE ="No se encontró el id: ";
+    private static final String MESSAGE = "No se encontró el id: ";
 
     @GetMapping("/productos")
     public List<Producto> showAll() {
@@ -43,6 +43,20 @@ public class ControladorProducto {
                 () -> new RecursoNoEncontrado(MESSAGE + id)
         );
         return ResponseEntity.ok().body(producto);
+    }
+
+    @GetMapping("/producto/{codigo}")
+    public ResponseEntity<?> searchByCodigo(@PathVariable(value = "codigo") Long codigo) throws RecursoNoEncontrado {
+
+        if (repositorioProducto.existsByCodigo(codigo)) {
+            Producto producto = repositorioProducto.findByCodigo(codigo);
+            return ResponseEntity.ok().body(producto);
+        } else {
+            Map<String, String> response = new HashMap<String, String>();
+            response.put("error", "No se encontro el producto con el codigo : " + codigo);
+            return ResponseEntity.badRequest().body(response);
+        }
+
     }
 
     @PostMapping("/productos")
