@@ -20,9 +20,8 @@ public class Venta {
     private double total;
 
     @Column(name = "fecha", nullable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private Date fecha;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private String fecha;
 
     @ManyToOne(optional = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVendedor")
@@ -60,11 +59,11 @@ public class Venta {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 

@@ -22,15 +22,8 @@ public class CorteCaja {
     private double total;
 
     @Column(name = "fecha", nullable = true)
-    @Temporal(TemporalType.TIMESTAMP)
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
-    private Date fecha;
-
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idVendedor")
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "idVendedor")
-    @JsonIdentityReference(alwaysAsId = true)
-    private Vendedor vendedor;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private String fecha;
 
     public CorteCaja() {
         //Esta vacio solo para poder crear el objeto
@@ -52,19 +45,12 @@ public class CorteCaja {
         this.total = total;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 
-    public Vendedor getVendedor() {
-        return vendedor;
-    }
-
-    public void setVendedor(Vendedor vendedor) {
-        this.vendedor = vendedor;
-    }
 }
