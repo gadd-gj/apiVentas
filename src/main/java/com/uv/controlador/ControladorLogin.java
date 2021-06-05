@@ -41,7 +41,7 @@ public class ControladorLogin {
 
             Administrador admin = repositorioAdministrador.findByUsername(username);
             response.put("ok", "1");
-            response.put("idAdministrador", String.valueOf(admin.getIdAdministrador()));
+            response.put("idUser", String.valueOf(admin.getIdAdministrador()));
             return ResponseEntity.accepted().body(response);
 
         } else if (repositorioVendedor.existsByUsername(username)) {
@@ -49,7 +49,7 @@ public class ControladorLogin {
             Vendedor vendedor = repositorioVendedor.findByUsername(username);
             if (vendedor.getActivo() == 1) {
                 response.put("ok", "2");
-                response.put("idVendedor", String.valueOf(vendedor.getIdVendedor()));
+                response.put("idUser", String.valueOf(vendedor.getIdVendedor()));
                 return ResponseEntity.accepted().body(response);
             } else {
                 response.put("error", "0");
