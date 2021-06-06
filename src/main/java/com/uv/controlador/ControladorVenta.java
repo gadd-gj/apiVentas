@@ -2,6 +2,7 @@ package com.uv.controlador;
 
 import com.uv.excepcion.RecursoNoEncontrado;
 import com.uv.modelo.CorteCaja;
+import com.uv.modelo.Vendedor;
 import com.uv.modelo.Venta;
 import com.uv.repositorio.RepositorioVenta;
 import java.util.HashMap;
@@ -59,6 +60,24 @@ public class ControladorVenta {
         
     }
 
+    @GetMapping("/ventas/vendedor")
+     public List<Venta> searchByVendedor(@RequestParam("vendedor") Vendedor idVendedor) {
+        
+        
+        Map<String, String> response = new HashMap<String, String>();
+        if (repositorioVenta.existsByVendedor(idVendedor)) {
+            
+            List<Venta> venta = repositorioVenta.findByVendedor(idVendedor);
+            return venta;
+
+        } else {
+            response.put("error", "no se encontro el vendedor solicitada");
+            List<Venta> venta = null;
+            return venta;
+        }
+        
+    }
+    
     @PostMapping("/ventas")
     public Venta create(@Valid @RequestBody Venta venta) {
         return repositorioVenta.save(venta);
