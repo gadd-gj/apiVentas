@@ -1,6 +1,7 @@
 package com.uv.controlador;
 
 import com.uv.excepcion.RecursoNoEncontrado;
+import com.uv.modelo.CorteCaja;
 import com.uv.modelo.Venta;
 import com.uv.repositorio.RepositorioVenta;
 import java.util.HashMap;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -39,6 +41,22 @@ public class ControladorVenta {
 
         return ResponseEntity.ok().body(venta);
 
+    }
+
+    @GetMapping("/ventas/cortecaja")
+    public ResponseEntity<?> searchByCorteCaja(@RequestParam("corteCaja") CorteCaja idCorteCaja) {
+
+        Map<String, String> response = new HashMap<String, String>();
+        if (repositorioVenta.existsByCorteCaja(idCorteCaja)) {
+            
+            Venta venta = repositorioVenta.findByCorteCaja(idCorteCaja);
+            return ResponseEntity.ok().body(venta);
+
+        } else {
+            response.put("error", "no se encontro la venta solicitada");
+            return ResponseEntity.ok().body(response);
+        }
+        
     }
 
     @PostMapping("/ventas")
