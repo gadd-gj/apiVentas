@@ -1,12 +1,6 @@
 package com.uv.modelo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 import javax.persistence.*;
 
 @Entity

@@ -24,7 +24,7 @@ public class Producto {
     private String descripcion;
 
     @Column(name = "precio", nullable = false)
-    private Long precio;
+    private double precio;
 
     @Column(name = "existencia", nullable = false)
     private int existencia;
@@ -74,11 +74,11 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public Long getPrecio() {
+    public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Long precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
